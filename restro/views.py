@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from rest_framework import permissions
-from rest_framework.permissions import AllowAny, IsAuthenticated
+from rest_framework.permissions import AllowAny, IsAuthenticated, IsAuthenticatedOrReadOnly
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework import viewsets
 from rest_framework.response import Response
@@ -39,19 +39,19 @@ class CustomerView(viewsets.ModelViewSet):
 class PunjabiView(viewsets.ModelViewSet):
     queryset = Punjabi.objects.all()
     serializer_class = PunjabiSerialize
-    permission_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticatedOrReadOnly]
 
 class GujaratiView(viewsets.ModelViewSet):
     queryset = Gujarati.objects.all()
     serializer_class = GujaratiSerialize
-    permission_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticatedOrReadOnly]
 
 class South_IndianView(viewsets.ModelViewSet):
     queryset = South_Indian.objects.all()
     serializer_class = South_IndianSerialize
-    permission_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticatedOrReadOnly]
 
 class ItalianView(viewsets.ModelViewSet):
     queryset = Italian.objects.all()
     serializer_class = ItalianSerialize
-    permission_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticatedOrReadOnly]
