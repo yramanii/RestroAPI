@@ -34,6 +34,7 @@ INSTALLED_APPS = [
     'restro.apps.RestroConfig',
     'rest_framework',
     'crispy_forms',
+    'django_filters',
     # 'rest_framework.authtoken',
     
     'django.contrib.admin',
@@ -135,6 +136,11 @@ REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly',
     ],
+
+    'DEFAULT_FILTER_BACKENDS': [
+        'django_filters.rest_framework.DjangoFilterBackend'
+    ],
+
     # 'DEFAULT_AUTHENTICATION_CLASSES': [
     #     'rest_framework_simplejwt.authentication.JWTAuthentication',
     # ]

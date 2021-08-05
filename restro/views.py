@@ -1,5 +1,6 @@
 from django.shortcuts import render
-from rest_framework import permissions
+from django_filters import rest_framework as filters
+
 from rest_framework.permissions import AllowAny, IsAuthenticated, IsAuthenticatedOrReadOnly
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework import viewsets
@@ -20,10 +21,18 @@ def api(request):
 
 # ---------------------------------------------- Model Views ---------------------------------------------------------------------------------
 
+class CustomerFilter(filters.FilterSet):
+    class Meta:
+        model = Customer
+        fields = {
+            'Name': ['icontains'],
+        }
+
 class CustomerView(viewsets.ModelViewSet):
     queryset = Customer.objects.all()
     serializer_class = CustomerSerialize
     permission_classes = [IsAuthenticated]
+    filter_class = CustomerFilter
     # authentication_classes = [TokenAuthentication]
 
 # class MenuView(viewsets.ModelViewSet):
